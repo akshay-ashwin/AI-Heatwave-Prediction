@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Climate Analytics | Climate Intelligence</title>
+
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="analytics">
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-dot">&#9679;</span>
+      <div class="brand-text">
+        <div class="brand-title">Climate Intelligence</div>
+        <div class="brand-subtitle">Climate Monitoring &amp; Early Warning</div>
+      </div>
+    </div>
+    <nav class="app-nav">
+      <a href="index.html" data-page="dashboard">Dashboard</a>
+      <a href="prediction.html" data-page="prediction">Predictions</a>
+      <a href="heatwave.html" data-page="heatwave">Heatwave AI</a>
+      <a href="alerts.html" data-page="alerts">Alerts</a>
+      <a href="analytics.html" data-page="analytics">Analytics</a>
+    </nav>
+    <div class="location">
+      <i class="bi bi-geo-alt"></i>
+      <span>Mumbai, Maharashtra</span>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <div class="page-title-row">
+      <div>
+        <h1 class="page-title">Climate Analytics</h1>
+        <p class="page-subtitle">Historical heatwave trends and model insights</p>
+      </div>
+      <div class="page-meta">All charts show illustrative demo data</div>
+    </div>
+
+    <div class="row g-3 gap-panel">
+      <div class="col-lg-6">
+        <div class="panel h-100">
+          <div class="panel-header">
+            <h2 class="panel-title" style="font-size:16px;">Temperature Trend</h2>
+            <span class="panel-tag panel-tag-brand">Demo Data</span>
+          </div>
+          <canvas id="chart-temperature-trend" height="220"></canvas>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="panel h-100">
+          <div class="panel-header">
+            <h2 class="panel-title" style="font-size:16px;">Risk Distribution</h2>
+            <span class="panel-tag panel-tag-brand">Demo Data</span>
+          </div>
+          <canvas id="chart-risk-distribution" height="220"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3 gap-panel">
+      <div class="col-lg-6">
+        <div class="panel h-100">
+          <div class="panel-header">
+            <h2 class="panel-title" style="font-size:16px;">Heatwave Events</h2>
+            <span class="panel-tag panel-tag-brand">Demo Data</span>
+          </div>
+          <canvas id="chart-heatwave-events" height="220"></canvas>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="panel h-100">
+          <h2 class="panel-title mb-3" style="font-size:16px;">Model Performance</h2>
+          <div class="row g-3" id="model-performance">
+            <!-- populated by analytics.js -->
+          </div>
+          <p class="note-box mb-0">Model metrics will be populated from the deployed prediction model.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chartjs/chart.umd.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/analytics.js"></script>
+</body>
+</html>

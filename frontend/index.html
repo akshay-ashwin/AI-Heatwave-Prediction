@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heatwave Command Center | Climate Intelligence</title>
+
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+
+  <!-- ===================== Header / Navigation ===================== -->
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-dot">&#9679;</span>
+      <div class="brand-text">
+        <div class="brand-title">Climate Intelligence</div>
+        <div class="brand-subtitle">Climate Monitoring &amp; Early Warning</div>
+      </div>
+    </div>
+    <nav class="app-nav">
+      <a href="index.html" data-page="dashboard">Dashboard</a>
+      <a href="prediction.html" data-page="prediction">Predictions</a>
+      <a href="heatwave.html" data-page="heatwave">Heatwave AI</a>
+      <a href="alerts.html" data-page="alerts">Alerts</a>
+      <a href="analytics.html" data-page="analytics">Analytics</a>
+    </nav>
+    <div class="location">
+      <i class="bi bi-geo-alt"></i>
+      <span>Mumbai, Maharashtra</span>
+    </div>
+  </header>
+
+  <!-- ===================== Page content ===================== -->
+  <main class="page-content">
+
+    <div class="page-title-row">
+      <div>
+        <h1 class="page-title">Heatwave Command Center</h1>
+        <p class="page-subtitle">Climate intelligence for heatwave monitoring, prediction and early warning</p>
+      </div>
+      <div class="page-meta">
+        <i class="bi bi-clock-history"></i>
+        Last updated: <span data-timestamp>Today, 10:32 AM</span>
+      </div>
+    </div>
+
+    <!-- KPI row -->
+    <div class="row g-3 gap-panel">
+      <div class="col-6 col-lg-3">
+        <div class="metric-card">
+          <div class="metric-label">Current Temperature</div>
+          <div class="metric-value" id="metric-temperature">39.2&deg;C</div>
+          <div class="metric-sub text-orange" id="metric-temperature-sub">+3.8&deg; above seasonal normal</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="metric-card">
+          <div class="metric-label">Heatwave Risk</div>
+          <div class="metric-value text-red" id="metric-risk">HIGH</div>
+          <div class="metric-sub" id="metric-risk-sub">91% prediction probability</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="metric-card">
+          <div class="metric-label">Prediction Confidence</div>
+          <div class="metric-value" id="metric-confidence">91%</div>
+          <div class="metric-sub">Prediction confidence</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="metric-card">
+          <div class="metric-label">Forecast</div>
+          <div class="metric-value" id="metric-forecast">Next 1&ndash;3 Days</div>
+          <div class="metric-sub">Elevated heat risk</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle row: Regional risk + Why this prediction -->
+    <div class="row g-3 gap-panel">
+      <div class="col-lg-7">
+        <div class="panel h-100">
+          <div class="panel-header">
+            <h2 class="panel-title">Regional Heatwave Risk</h2>
+            <span class="panel-tag panel-tag-brand">Demo Data</span>
+          </div>
+          <p class="text-muted" style="font-size:13px; margin-top:-10px; margin-bottom:16px;">Ward-level outlook &middot; 24-hour forecast</p>
+
+          <div class="map-legend">
+            <span><span class="legend-dot" style="background: var(--green-text);"></span>Normal</span>
+            <span><span class="legend-dot" style="background: var(--orange-text);"></span>Heatwave</span>
+            <span><span class="legend-dot" style="background: var(--red-text);"></span>Severe</span>
+          </div>
+
+          <div class="risk-map" id="risk-map">
+            <div class="map-caption">Mumbai</div>
+            <!-- Dots positioned to mimic the Canva mock map -->
+            <div class="risk-dot dot-lg" style="background: var(--red-text); top: 42%; left: 46%;" title="Kurla &mdash; Severe"></div>
+            <div class="risk-dot-label" style="top: 34%; left: 44%;">Kurla &middot; 40.1&deg;C</div>
+
+            <div class="risk-dot" style="background: var(--orange-text); top: 30%; left: 28%;" title="Andheri East &mdash; High"></div>
+            <div class="risk-dot" style="background: var(--orange-text); top: 58%; left: 34%;" title="Dharavi &mdash; Heatwave"></div>
+            <div class="risk-dot" style="background: var(--green-text); top: 66%; left: 58%;" title="Colaba &mdash; Normal"></div>
+          </div>
+
+          <table class="risk-table" id="risk-table">
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Temp</th>
+                <th>Risk</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Kurla</td>
+                <td>40.1&deg;C</td>
+                <td><span class="badge-pill badge-red">SEVERE</span></td>
+              </tr>
+              <tr>
+                <td>Andheri East</td>
+                <td>39.6&deg;C</td>
+                <td><span class="badge-pill badge-orange">HIGH</span></td>
+              </tr>
+              <tr>
+                <td>Dharavi</td>
+                <td>39.0&deg;C</td>
+                <td><span class="badge-pill badge-orange">HEATWAVE</span></td>
+              </tr>
+              <tr>
+                <td>Colaba</td>
+                <td>36.8&deg;C</td>
+                <td><span class="badge-pill badge-green">NORMAL</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="panel gap-panel">
+          <div class="panel-header">
+            <h2 class="panel-title" style="font-size:16px;">Why this prediction?</h2>
+            <span class="panel-tag panel-tag-brand">AI Explained &middot; Demo Data</span>
+          </div>
+
+          <div id="why-factors">
+            <div class="factor-row">
+              <div class="factor-top">
+                <span>Persistent temperature anomaly</span>
+                <span class="factor-value">42%</span>
+              </div>
+              <div class="factor-track"><div class="factor-fill fill-orange" style="width: 42%;"></div></div>
+            </div>
+            <div class="factor-row">
+              <div class="factor-top">
+                <span>High overnight humidity</span>
+                <span class="factor-value">31%</span>
+              </div>
+              <div class="factor-track"><div class="factor-fill fill-orange" style="width: 31%;"></div></div>
+            </div>
+            <div class="factor-row">
+              <div class="factor-top">
+                <span>Low wind dispersion</span>
+                <span class="factor-value">18%</span>
+              </div>
+              <div class="factor-track"><div class="factor-fill fill-orange" style="width: 18%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-red">
+          <div class="panel-header">
+            <h2 class="panel-title" style="font-size:16px;">Recommended Authority Actions</h2>
+            <span class="panel-tag panel-tag-red">Act Now</span>
+          </div>
+          <div id="authority-actions">
+            <div class="action-item">
+              <span class="action-number">1</span>
+              <span class="action-label">Issue ward-level heat advisory</span>
+            </div>
+            <div class="action-item">
+              <span class="action-number">2</span>
+              <span class="action-label">Activate cooling centres</span>
+            </div>
+            <div class="action-item">
+              <span class="action-number">3</span>
+              <span class="action-label">Mobilise field response teams</span>
+            </div>
+            <div class="action-item">
+              <span class="action-number">4</span>
+              <span class="action-label">Monitor vulnerable populations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

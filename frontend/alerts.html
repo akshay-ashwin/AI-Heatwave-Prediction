@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heatwave Early Warning | Climate Intelligence</title>
+
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="alerts">
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-dot">&#9679;</span>
+      <div class="brand-text">
+        <div class="brand-title">Climate Intelligence</div>
+        <div class="brand-subtitle">Climate Monitoring &amp; Early Warning</div>
+      </div>
+    </div>
+    <nav class="app-nav">
+      <a href="index.html" data-page="dashboard">Dashboard</a>
+      <a href="prediction.html" data-page="prediction">Predictions</a>
+      <a href="heatwave.html" data-page="heatwave">Heatwave AI</a>
+      <a href="alerts.html" data-page="alerts">Alerts</a>
+      <a href="analytics.html" data-page="analytics">Analytics</a>
+    </nav>
+    <div class="location">
+      <i class="bi bi-geo-alt"></i>
+      <span>Mumbai, Maharashtra</span>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <div class="page-title-row">
+      <div>
+        <h1 class="page-title">Heatwave Early Warning</h1>
+        <p class="page-subtitle">Alert creation and authority response management</p>
+      </div>
+      <div class="page-meta">
+        <span class="tag-demo">Demo Data</span>
+      </div>
+    </div>
+
+    <!-- Section 1 + 2 -->
+    <div class="row g-3 gap-panel">
+      <div class="col-lg-6">
+        <div class="panel h-100">
+          <h2 class="panel-title mb-3">1. Alert Details</h2>
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="field-label">Alert ID</div>
+              <div class="field-value" id="alert-id">HW-MUM-2026-001</div>
+            </div>
+            <div class="col-6">
+              <div class="field-label">Created</div>
+              <div class="field-value" id="alert-created">15 Sep 2026</div>
+            </div>
+            <div class="col-6">
+              <div class="field-label">Status</div>
+              <span class="badge-pill badge-green" id="alert-status">READY TO ISSUE</span>
+            </div>
+            <div class="col-6">
+              <div class="field-label">Severity</div>
+              <span class="badge-pill badge-red" id="alert-severity">SEVERE</span>
+            </div>
+            <div class="col-12">
+              <div class="field-label">Target</div>
+              <div class="field-value" id="alert-target">Mumbai Region</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="panel h-100">
+          <h2 class="panel-title mb-3">2. Alert Distribution</h2>
+          <div id="alert-distribution">
+            <div class="status-row"><span>Public Mobile Alert</span><span class="badge-pill badge-green">READY</span></div>
+            <div class="status-row"><span>Government Portal</span><span class="badge-pill badge-green">READY</span></div>
+            <div class="status-row"><span>Public Display Boards</span><span class="badge-pill badge-green">READY</span></div>
+            <div class="status-row"><span>Emergency Services</span><span class="badge-pill badge-green">READY</span></div>
+            <div class="status-row"><span>Hospitals &amp; Health Centres</span><span class="badge-pill badge-green">READY</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: Public Advisory -->
+    <div class="panel panel-orange gap-panel">
+      <h2 class="panel-title mb-2">3. Public Advisory</h2>
+      <div style="font-size: 22px; font-weight: 700; color: var(--red-text);" id="advisory-headline">
+        SEVERE HEATWAVE ALERT &mdash; MUMBAI
+      </div>
+      <p class="fst-italic mt-2 mb-2" style="color: #9a3412;" id="advisory-message">
+        &ldquo;Residents are advised to avoid prolonged outdoor exposure, stay hydrated, and take extra
+        precautions for children, elderly people, and other vulnerable groups.&rdquo;
+      </p>
+      <div style="font-size: 13px; font-weight: 700; color: #c2410c;">
+        PUBLIC-FACING MESSAGE &middot; DEMO DATA
+      </div>
+    </div>
+
+    <!-- Section 4: Response Coordination -->
+    <div class="panel gap-panel">
+      <h2 class="panel-title mb-3">4. Response Coordination</h2>
+      <div id="response-coordination">
+        <div class="status-row"><span>Disaster Management</span><span class="badge-pill badge-green">READY</span></div>
+        <div class="status-row"><span>Municipal Corporation</span><span class="badge-pill badge-green">READY</span></div>
+        <div class="status-row"><span>Emergency Services</span><span class="badge-pill badge-orange">NOTIFIED</span></div>
+        <div class="status-row"><span>Health Departments</span><span class="badge-pill badge-slate">PENDING</span></div>
+        <div class="status-row"><span>Field Response Teams</span><span class="badge-pill badge-slate">PENDING</span></div>
+      </div>
+    </div>
+
+    <!-- Section 5: Actions -->
+    <div class="d-flex justify-content-end gap-2 flex-wrap">
+      <button type="button" class="btn btn-hw-secondary" id="btn-save-draft">SAVE AS DRAFT</button>
+      <button type="button" class="btn btn-hw-primary" id="btn-issue-warning">ISSUE WARNING</button>
+    </div>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/alerts.js"></script>
+</body>
+</html>

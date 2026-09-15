@@ -1,0 +1,669 @@
+/* ==========================================================================
+   AI Heatwave Prediction & Early Warning System — Shared Stylesheet
+   Design source of truth: finalized Canva prototype
+   Stack: HTML5 + CSS3 + Bootstrap 5 (Bootstrap provides grid/utilities only;
+   all component look-and-feel below is custom to match Canva exactly)
+   ========================================================================== */
+
+:root {
+  /* Surfaces */
+  --bg: #f8f9fb;
+  --card-bg: #ffffff;
+  --border: #e5e7eb;
+  --radius-lg: 14px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+
+  /* Text */
+  --heading: #0f172a;
+  --body-text: #334155;
+  --muted: #64748b;
+  --muted-2: #94a3b8;
+
+  /* Brand */
+  --brand: #0d9488;
+
+  /* Status: green (ready / normal / low) */
+  --green-bg: #ecfdf5;
+  --green-border: #bbf7d0;
+  --green-text: #16a34a;
+
+  /* Status: orange (notified / high / heatwave) */
+  --orange-bg: #fff7ed;
+  --orange-border: #fed7aa;
+  --orange-text: #ea580c;
+
+  /* Status: red (severe / danger) */
+  --red-bg: #fef2f2;
+  --red-border: #fca5a5;
+  --red-text: #dc2626;
+
+  /* Status: slate (pending / neutral) */
+  --slate-bg: #f1f5f9;
+  --slate-border: #e2e8f0;
+  --slate-text: #64748b;
+
+  --header-height: 72px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--body-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Header / Navigation
+   ========================================================================== */
+
+.app-header {
+  height: var(--header-height);
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.app-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 48px;
+  white-space: nowrap;
+}
+
+.app-header .brand-dot {
+  color: var(--brand);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.app-header .brand-text .brand-title {
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--heading);
+  line-height: 1.2;
+}
+
+.app-header .brand-text .brand-subtitle {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.2;
+}
+
+.app-nav {
+  display: flex;
+  gap: 28px;
+  flex: 1;
+}
+
+.app-nav a {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 500;
+  padding: 8px 0;
+}
+
+.app-nav a.active,
+.app-nav a:hover {
+  color: var(--heading);
+}
+
+.app-header .location {
+  color: var(--body-text);
+  font-size: 14px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   Page shell
+   ========================================================================== */
+
+.page-content {
+  padding: 32px 40px 64px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.page-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.page-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--heading);
+  margin: 0 0 6px;
+}
+
+.page-subtitle {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.page-meta {
+  font-size: 13px;
+  color: var(--muted);
+  text-align: right;
+}
+
+.tag-demo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Cards / Panels
+   ========================================================================== */
+
+.panel {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.panel-orange {
+  background: var(--orange-bg);
+  border-color: var(--orange-border);
+}
+
+.panel-red {
+  background: var(--red-bg);
+  border-color: var(--red-border);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.panel-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--heading);
+  margin: 0;
+}
+
+.panel-title-sm {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--heading);
+  margin: 0;
+}
+
+.panel-tag {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.panel-tag-brand { color: var(--brand); }
+.panel-tag-red { color: var(--red-text); }
+
+/* ==========================================================================
+   Metric cards (top KPI row)
+   ========================================================================== */
+
+.metric-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  height: 100%;
+}
+
+.metric-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+}
+
+.metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--heading);
+  line-height: 1.1;
+}
+
+.metric-value.text-red { color: var(--red-text); }
+.metric-value.text-green { color: var(--green-text); }
+
+.metric-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.metric-sub.text-orange { color: var(--orange-text); }
+
+/* ==========================================================================
+   Field label/value pattern
+   ========================================================================== */
+
+.field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+
+.field-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--heading);
+}
+
+/* ==========================================================================
+   Badges / Status pills
+   ========================================================================== */
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge-green {
+  background: var(--green-bg);
+  border-color: var(--green-border);
+  color: var(--green-text);
+}
+
+.badge-orange {
+  background: var(--orange-bg);
+  border-color: var(--orange-border);
+  color: var(--orange-text);
+}
+
+.badge-red {
+  background: var(--red-bg);
+  border-color: var(--red-border);
+  color: var(--red-text);
+}
+
+.badge-slate {
+  background: var(--slate-bg);
+  border-color: var(--slate-border);
+  color: var(--slate-text);
+}
+
+/* ==========================================================================
+   Distribution / coordination rows
+   ========================================================================== */
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 15px;
+  color: var(--body-text);
+}
+
+.status-row:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   Numbered action list
+   ========================================================================== */
+
+.action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.action-number {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--red-text);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+
+.action-label {
+  font-size: 15px;
+  color: var(--body-text);
+}
+
+/* ==========================================================================
+   Horizontal contribution / factor bars
+   ========================================================================== */
+
+.factor-row {
+  margin-bottom: 14px;
+}
+
+.factor-row:last-child {
+  margin-bottom: 0;
+}
+
+.factor-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--body-text);
+  margin-bottom: 6px;
+}
+
+.factor-value {
+  font-weight: 700;
+  color: var(--heading);
+}
+
+.factor-track {
+  height: 8px;
+  background: var(--slate-bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.factor-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: var(--orange-text);
+}
+
+.factor-fill.fill-red { background: var(--red-text); }
+.factor-fill.fill-green { background: var(--green-text); }
+.factor-fill.fill-orange { background: var(--orange-text); }
+
+/* ==========================================================================
+   Mock risk map
+   ========================================================================== */
+
+.risk-map {
+  position: relative;
+  background: #eef2f7;
+  border-radius: var(--radius-md);
+  height: 220px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.risk-map .map-caption {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.risk-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+.risk-dot.dot-lg {
+  width: 26px;
+  height: 26px;
+}
+
+.risk-dot-label {
+  position: absolute;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--heading);
+  background: #ffffffcc;
+  padding: 1px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.map-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.map-legend .legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* ==========================================================================
+   Risk table
+   ========================================================================== */
+
+.risk-table {
+  width: 100%;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+
+.risk-table th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.risk-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--body-text);
+}
+
+.risk-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn-hw-primary {
+  background: var(--red-text);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.btn-hw-primary:hover {
+  background: #b91c1c;
+  color: #fff;
+}
+
+.btn-hw-secondary {
+  background: #ffffff;
+  color: var(--body-text);
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.btn-hw-secondary:hover {
+  background: #f8fafc;
+  color: var(--body-text);
+}
+
+/* ==========================================================================
+   Severity banner
+   ========================================================================== */
+
+.severity-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--red-bg);
+  border: 1px solid var(--red-border);
+  border-radius: var(--radius-lg);
+  padding: 18px 24px;
+  margin-bottom: 24px;
+}
+
+.severity-banner .severity-left .severity-title {
+  color: var(--red-text);
+  font-weight: 700;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.severity-banner .severity-left .severity-loc {
+  font-size: 13px;
+  color: var(--body-text);
+  margin-top: 2px;
+}
+
+.severity-banner .severity-mid {
+  text-align: center;
+}
+
+.severity-banner .severity-mid .severity-pct {
+  color: var(--red-text);
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.severity-banner .severity-mid .severity-pct-label {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.severity-banner .severity-right {
+  text-align: right;
+}
+
+.severity-banner .severity-right .severity-window {
+  font-weight: 700;
+  color: var(--heading);
+  font-size: 15px;
+}
+
+.severity-banner .severity-right .severity-window-label {
+  font-size: 12px;
+  color: var(--red-text);
+}
+
+/* ==========================================================================
+   Note / callout box
+   ========================================================================== */
+
+.note-box {
+  background: var(--slate-bg);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 16px;
+}
+
+/* ==========================================================================
+   Utility spacing (in addition to Bootstrap's)
+   ========================================================================== */
+
+.gap-panel {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 991.98px) {
+  .app-header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+  .app-nav {
+    order: 3;
+    width: 100%;
+    gap: 18px;
+    overflow-x: auto;
+  }
+  .page-content {
+    padding: 24px 20px 48px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .page-title {
+    font-size: 24px;
+  }
+  .severity-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .severity-banner .severity-mid,
+  .severity-banner .severity-right {
+    text-align: left;
+  }
+}

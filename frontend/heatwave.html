@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heatwave Prediction | Climate Intelligence</title>
+
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="heatwave">
+
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-dot">&#9679;</span>
+      <div class="brand-text">
+        <div class="brand-title">Climate Intelligence</div>
+        <div class="brand-subtitle">Climate Monitoring &amp; Early Warning</div>
+      </div>
+    </div>
+    <nav class="app-nav">
+      <a href="index.html" data-page="dashboard">Dashboard</a>
+      <a href="prediction.html" data-page="prediction">Predictions</a>
+      <a href="heatwave.html" data-page="heatwave">Heatwave AI</a>
+      <a href="alerts.html" data-page="alerts">Alerts</a>
+      <a href="analytics.html" data-page="analytics">Analytics</a>
+    </nav>
+    <div class="location">
+      <i class="bi bi-geo-alt"></i>
+      <span>Mumbai, Maharashtra</span>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <div class="page-title-row">
+      <div>
+        <h1 class="page-title">Heatwave Prediction</h1>
+        <p class="page-subtitle">AI-powered short-term heatwave risk assessment</p>
+      </div>
+    </div>
+
+    <!-- Severity banner -->
+    <div class="severity-banner">
+      <div class="severity-left">
+        <div class="severity-title"><i class="bi bi-exclamation-triangle-fill"></i> SEVERE HEATWAVE</div>
+        <div class="severity-loc">Mumbai, Maharashtra</div>
+      </div>
+      <div class="severity-mid">
+        <div class="severity-pct" id="risk-probability">91% RISK</div>
+        <div class="severity-pct-label">Predicted probability</div>
+      </div>
+      <div class="severity-right">
+        <div class="severity-window">Next 1&ndash;3 Days</div>
+        <div class="severity-window-label">Forecast window</div>
+      </div>
+    </div>
+
+    <!-- KPI row -->
+    <div class="row g-3 gap-panel">
+      <div class="col-6 col-lg-3">
+        <div class="metric-card">
+          <div class="metric-label">Maximum Temperature</div>
+          <div class="metric-value" id="metric-max-temp">42&deg;C</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="metric-card">
+          <div class="metric-label">Relative Humidity</div>
+          <div class="metric-value" id="metric-humidity">68%</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="metric-card">
+          <div class="metric-label">Wind Speed</div>
+          <div class="metric-value" id="metric-wind">9 km/h</div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="metric-card">
+          <div class="metric-label">Temperature Deviation</div>
+          <div class="metric-value text-orange" id="metric-deviation" style="color: var(--orange-text);">+5&deg;C</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why did the AI make this prediction / Recommended response -->
+    <div class="row g-3 gap-panel">
+      <div class="col-lg-7">
+        <div class="panel h-100">
+          <div class="panel-header">
+            <h2 class="panel-title" style="font-size:16px;">Why did the AI make this prediction?</h2>
+            <span class="panel-tag panel-tag-brand">AI Explained &middot; Demo Data</span>
+          </div>
+
+          <div id="shap-factors">
+            <div class="factor-row">
+              <div class="factor-top"><span>Maximum Temperature</span><span class="factor-value">+42%</span></div>
+              <div class="factor-track"><div class="factor-fill fill-orange" style="width: 42%;"></div></div>
+            </div>
+            <div class="factor-row">
+              <div class="factor-top"><span>Humidity</span><span class="factor-value">+27%</span></div>
+              <div class="factor-track"><div class="factor-fill fill-orange" style="width: 27%;"></div></div>
+            </div>
+            <div class="factor-row">
+              <div class="factor-top"><span>Temperature Deviation</span><span class="factor-value">+16%</span></div>
+              <div class="factor-track"><div class="factor-fill fill-orange" style="width: 16%;"></div></div>
+            </div>
+            <div class="factor-row">
+              <div class="factor-top"><span>Wind Speed</span><span class="factor-value">&minus;5%</span></div>
+              <div class="factor-track"><div class="factor-fill fill-green" style="width: 5%;"></div></div>
+            </div>
+          </div>
+
+          <p class="note-box" id="shap-note">
+            The model predicts a high likelihood of severe heatwave conditions because of the persistent
+            temperature anomaly, elevated humidity, and limited wind dispersion.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="panel panel-red h-100">
+          <div class="panel-header">
+            <h2 class="panel-title" style="font-size:16px;">Recommended Authority Response</h2>
+            <span class="panel-tag panel-tag-red">Act Now</span>
+          </div>
+          <div id="response-actions">
+            <div class="action-item">
+              <span class="action-number">1</span>
+              <span class="action-label">Issue ward-level heat advisory</span>
+            </div>
+            <div class="action-item">
+              <span class="action-number">2</span>
+              <span class="action-label">Activate cooling centres</span>
+            </div>
+            <div class="action-item">
+              <span class="action-number">3</span>
+              <span class="action-label">Mobilise field response teams</span>
+            </div>
+            <div class="action-item">
+              <span class="action-number">4</span>
+              <span class="action-label">Monitor vulnerable populations</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Risk assessment + CTA -->
+    <div class="row g-3 gap-panel">
+      <div class="col-lg-7">
+        <div class="panel h-100">
+          <h2 class="panel-title" style="font-size:16px; margin-bottom: 14px;">Risk Assessment</h2>
+          <ul class="list-unstyled row g-2 mb-0" id="risk-assessment-list">
+            <li class="col-6"><i class="bi bi-dot" style="color: var(--red-text);"></i> High temperature anomaly</li>
+            <li class="col-6"><i class="bi bi-dot" style="color: var(--orange-text);"></i> Elevated humidity</li>
+            <li class="col-6"><i class="bi bi-dot" style="color: var(--orange-text);"></i> Low wind dispersion</li>
+            <li class="col-6"><i class="bi bi-dot" style="color: var(--red-text);"></i> Severe heatwave risk</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-5 d-flex align-items-center justify-content-lg-end">
+        <a href="alerts.html" class="btn btn-hw-primary w-100 w-lg-auto text-center">
+          GENERATE EARLY WARNING <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/heatwave.js"></script>
+</body>
+</html>
